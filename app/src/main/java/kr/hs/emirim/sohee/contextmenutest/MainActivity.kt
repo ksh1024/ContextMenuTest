@@ -1,5 +1,6 @@
 package kr.hs.emirim.sohee.contextmenutest
 
+import android.content.DialogInterface
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 
 class MainActivity : AppCompatActivity() {
     lateinit var linear: LinearLayout
@@ -22,6 +24,20 @@ class MainActivity : AppCompatActivity() {
         linear = findViewById(R.id.linear)
         btn1 = findViewById(R.id.btn1)
         btn2 = findViewById(R.id.btn2)
+        var btn3 = findViewById<Button>(R.id.btn3)
+        btn3.setOnClickListener{
+            var dlg = AlertDialog.Builder(this@MainActivity)
+            dlg.setTitle("안내문")
+            dlg.setMessage("슈퍼블루문은 17년 뒤에 다시 나옵니다.")
+            dlg.setIcon(R.drawable.bluemoon)
+            dlg.setPositiveButton("확인"){dialog,which ->
+                linear.setBackgroundColor(Color.MAGENTA)
+            }
+            dlg.setNegativeButton("취소", DialogInterface.OnClickListener{
+                dialogInterface, i -> Toast.makeText(this@MainActivity,"취소 버튼이 클릭됨", Toast.LENGTH_LONG).show()
+            })
+            dlg.show()
+        }
 
         btn1.setOnClickListener{
             var toast = Toast.makeText(applicationContext,"컨텍스트 메뉴는 길게 눌러야 나타납니다.",Toast.LENGTH_LONG);

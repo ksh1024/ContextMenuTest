@@ -20,5 +20,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="버튼 변경"/>
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="대화 상자"/>
 
 </LinearLayout>
