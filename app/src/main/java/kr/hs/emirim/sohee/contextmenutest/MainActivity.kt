@@ -1,8 +1,10 @@
 package kr.hs.emirim.sohee.contextmenutest
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextMenu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
@@ -37,5 +39,37 @@ class MainActivity : AppCompatActivity() {
         if(v === btn2){
             mInflater.inflate(R.menu.menu2,menu)
         }
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        super.onContextItemSelected(item)
+        when(item.itemId){
+            R.id.itemRed ->{
+                linear.setBackgroundColor(Color.DKGRAY)
+                return true
+            }
+            R.id.itemBlue ->{
+                linear.setBackgroundColor(Color.LTGRAY)
+                return true
+            }
+            R.id.itemYellow ->{
+                linear.setBackgroundColor(Color.BLACK)
+                return true
+            }
+            R.id.subRotate->{
+                btn1.rotation = 45f
+                return true
+            }
+            R.id.subSize->{
+                btn1.scaleX = 2f
+                return true
+            }
+            R.id.subOriginal->{
+                btn1.rotation = 0f
+                btn1.scaleX = 1f
+                return true
+            }
+        }
+        return false
     }
 }
